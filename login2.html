@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration</title>
+
+    <style>
+        body{
+            background-color: antiquewhite;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .error{
+            color: red;
+            font-size: 12px;
+            display: none;
+        }
+
+       
+        input:focus:invalid + .error {
+    display: block;
+}
+
+        input{
+            margin:5px;
+            width:200px;
+        }
+        button{
+            width:200px;
+            background-color:black;
+            color:antiquewhite; 
+            border-color: black;
+        }
+       @media (max-width: 600px) {
+    body {
+        background-color: pink; 
+    }
+}
+
+    </style>
+</head>
+
+<body>
+<div style="display:flex; justify-content:center;">
+    <form style="border:2px solid; padding:20px; width:300px; margin-top:100px; text-align:center;" action="home.html">
+        <h2>Registration page</h2>
+
+        <input type="text" name="name" placeholder="Your name"
+               minlength="9" maxlength="50"
+               required pattern="[A-Za-z ]+">
+        <p class="error">Must contain 9–50 letters only</p>
+
+        <input type="email" name="email" placeholder="Email" required>
+        <p class="error">Valid email required</p>
+
+        <input type="number" name="age" placeholder="Age"
+               required min="18" max="50">
+        <p class="error">Age must be between 18–50</p>
+
+        <button type="submit" id="submit">Register</button>
+    </form>
+</div>
+
+<script>
+    
+    let submit = document.getElementById('submit');
+
+    submit.addEventListener('mouseenter', function () {
+        submit.style.backgroundColor = "green";
+    });
+
+    submit.addEventListener('mouseleave', function () {
+        submit.style.backgroundColor = "black";
+    });
+    submit.addEventListener('click', function(){
+        submit.style.backgroundColor="red";
+    });
+</script>
+
+
+
+</script>
+</body>
+</html>

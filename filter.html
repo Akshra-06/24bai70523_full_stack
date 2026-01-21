@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ecommerce Filter</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Akaya+Kanadaka&family=Cedarville+Cursive&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <style>
+    header {
+      background-color: rgb(249, 228, 232);
+      height: 90px;
+      padding: 10px;
+      gap: 25%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      
+    }
+
+    .container {
+      text-align: center;
+      background-color: rgb(218, 163, 246);
+      margin-top: 0px;
+      padding: 20px;
+      height: fit-content;
+      border-top: #6a1b9a 5px solid;
+    }
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 40px;
+      margin-top: 50px;
+    }
+
+    .product {
+      background-color: white;
+      border-radius: 16px;
+      padding: 25px;
+      width: 220px;
+      text-align: center;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .product-name {
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+
+    .product-price {
+      color: #6a1b9a;
+      font-size: 16px;
+      margin-bottom: 12px;
+    }
+
+    .category, .add-to-cart{
+      background-color: blueviolet;
+      border: 0.5px solid blueviolet;
+      border-radius: 5px;
+      color: white;
+      font-size: 15px;
+      margin-top: 10px;
+    }
+    select {
+      padding: 10px 15px;
+      border-radius: 8px;
+      border: none;
+      font-size: 16px;
+      margin-top: 15px;
+      cursor: pointer;
+    }
+    .product:hover{
+    background-color:  rgb(249, 228, 232);
+    border: #6a1b9a 5px solid;
+}
+#openModal{
+    background-color: rgb(249, 228, 232);
+    border: none;
+    cursor:pointer;
+}
+#modal{
+    display:none;
+    top:0;
+    position: fixed;
+    width:100%;
+    height:100%;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0,0,0,0.5); 
+}
+.modal-content{
+    background-color: white;
+    color:#6a1b9a;
+    padding:30px;
+    width:300px;
+    position:relative;
+}
+.close{
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 22px;
+    cursor: pointer;
+}
+.add-to-cart:hover{
+    background-color: dimgray;
+}
+
+  </style>
+  <body>
+    <header>
+      <h1 style="font-family: Brush Script MT, cursive; font-size: 40px">
+        Cakeei.com
+      </h1>
+      <h2 style="color: rgb(133, 84, 180); padding: 15px">
+        Celebrate your birthday with cakeei!
+      </h2>
+      <button style="padding: 15px; font-size: 20px;" id="openModal">Cart</button>
+      <div class="modal" id="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+    <h2>Cart</h2>
+    <p>The cart has <span id="cart_items">0</span> items.</p>
+    <div class="display_name"></div>
+        </div>
+
+      </div>
+    </header>
+    <div class="container">
+      <h1 style="font-family: Akaya Kanadaka, system-ui">Choose a flavor:</h1>
+      <select id="filter">
+        <option value="all">All</option>
+        <option value="vanilla">Vanilla</option>
+        <option value="chocolate">Chocolate</option>
+        <option value="red-velvet">Red velvet</option>
+      </select>
+
+      <div class="products">
+        <div class="product" data-category="vanilla">
+          <div class="product-name">Birthday Cake</div>
+          <div class="product-price">$125</div>
+          <button class="category" value="vanilla">Vanilla</button>
+          <button class="add-to-cart">Add to cart</button>
+        </div>
+        <div class="product" data-category="red-velvet">
+          <div class="product-name">Birthday Cake</div>
+          <div class="product-price">$125</div>
+          <button class="category" value="red-velvet">Red Velvet</button>
+          <button class="add-to-cart">Add to cart</button>
+        </div>
+        <div class="product" data-category="chocolate">
+          <div class="product-name">Birthday Cake</div>
+          <div class="product-price">$125</div>
+          <button class="category" value="chocolate">Chocolate</button>
+          <button class="add-to-cart">Add to cart</button>
+        </div>
+        <div class="product" data-category="vanilla">
+          <div class="product-name">Birthday Cake</div>
+          <div class="product-price">$125</div>
+          <button class="category" value="vanilla">Vanilla</button>
+          <button class="add-to-cart">Add to cart</button>
+        </div>
+        <div class="product" data-category="chocolate">
+          <div class="product-name">Birthday Cake</div>
+          <div class="product-price">$125</div>
+          <button class="category" value="chocolate">Chocolate</button>
+          <button class="add-to-cart">Add to cart</button>
+        </div>
+        <div class="product" data-category="red-velvet">
+          <div class="product-name">Birthday Cake</div>
+          <div class="product-price">$125</div>
+          <button class="category" value="red-velvet">Red Velvet</button>
+          <button class="add-to-cart">Add to cart</button>
+        </div>
+        <div class="product" data-category="red-velvet">
+          <div class="product-name">Birthday Cake</div>
+          <div class="product-price">$125</div>
+          <button class="category" value="red-velvet">Red Velvet</button>
+          <button class="add-to-cart">Add to cart</button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        let filter = document.getElementById("filter");
+        let products = document.getElementsByClassName("product");
+
+        filter.addEventListener("change", function () {
+          let selected = filter.value;
+
+          for (let i = 0; i < products.length; i++) {
+            let productCategory = products[i].getAttribute("data-category");
+            if (selected === "all" || productCategory === selected) {
+              products[i].style.display = "block";
+            } else {
+              products[i].style.display = "none";
+            }
+          }
+        });
+
+let modal = document.getElementById("modal");
+    let openBtn = document.getElementById("openModal");
+    let closeBtn = document.querySelector(".close");
+
+    openBtn.addEventListener("click", function(){
+        modal.style.display = "flex";
+    });
+
+    closeBtn.addEventListener("click", function(){
+        modal.style.display = "none";
+    });
+
+      
+    let cart_items=document.getElementById("cart_items");
+    let cartBtn=document.getElementsByClassName("add-to-cart");
+    let display_name=document.getElementsByClassName("display_name")[0];
+    let product_name=document.getElementsByClassName("product-name")
+    for(let i=0;i<cartBtn.length;i++)
+    {
+        cartBtn[i].addEventListener("click", function(){
+        cart_items.textContent=Number(cart_items.textContent) + 1;
+        display_name.innerHTML+=product_name[i].textContent+ "<br>";
+
+    });
+    }
+    
+
+
+});
+        
+    
+    </script>
+  </body>
+</html>

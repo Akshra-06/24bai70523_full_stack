@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bank Account</title>
+    <style>
+        #withdraw{
+            background-color:rgb(169, 8, 8);
+            width: 90px;
+            color:white;
+        }
+        #deposit{
+            background-color:rgb(31, 10, 189);
+            color:white;
+           width:90px;
+        }
+        #amount{
+            width: 300px;
+        }
+      .error {
+    color: red;
+}
+/* body{
+    background-color: burlywood;s
+} */
+#form-box{
+    background-color: rgb(242, 228, 173);
+}
+    </style>
+</head>
+<body>
+    <div style="border: 20px solid black; margin-left:30rem; width:300px; padding:20px; text-align: center; margin-top:200px; justify-content: center;" id="form-box">
+    <h2>Bank Account</h2>
+    <div style="display:flex; justify-content: center; ">
+        <form>
+            <div style="text-align:center; padding:25px;">
+        Your current bank balance: $<span id="balance">1000</span></div><br>
+        <input type="number" id="amount" placeholder="Enter the amount" required style="border-radius:5px; height:30px;">
+        <br><br>
+        <div><button type="button" id="deposit">Deposit</button>
+<button type="button" id="withdraw">Withdraw</button><br>
+<small class="error" hidden>Enter a valid amount!</small>
+</div>
+        
+        </form>
+    </div>
+</div>
+    <script>
+    let amountInput = document.getElementById('amount');
+    let balanceSpan = document.getElementById('balance');
+    let depositBtn = document.getElementById('deposit');
+    let withdrawBtn = document.getElementById('withdraw');
+    let errorMsg = document.querySelector('.error');
+
+    depositBtn.addEventListener('click', function () {
+        let amt = Number(amountInput.value);
+        let balance = Number(balanceSpan.innerText);
+
+        if (amt > 0) {
+            balanceSpan.innerText = balance + amt;
+            amountInput.value = "";
+            errorMsg.hidden=true;   // hide error
+        } else {
+            errorMsg.innerText="Enter a valid amount!";
+            errorMsg.hidden=false; // show error
+        }
+    });
+
+    withdrawBtn.addEventListener('click', function () {
+        let amt = Number(amountInput.value);
+        let balance = Number(balanceSpan.innerText);
+
+        if (amt > 0 && amt <= balance) {
+            balanceSpan.innerText = balance - amt;
+            amountInput.value = "";
+            errorMsg.hidden=true; 
+        } else if(amt>balance) {
+            errorMsg.innerText="Insufficient balance!";
+            errorMsg.hidden=false; 
+            
+        }
+        else{
+            errorMsg.innerText="Enter a valid amount!";
+            errorMsg.hidden=false;
+        }});
+
+        depositBtn.addEventListener('mouseover', function(){
+            depositBtn.style.backgroundColor='rgb(146, 135, 226)';
+        });
+        depositBtn.addEventListener('mouseleave', function(){
+            depositBtn.style.backgroundColor='rgb(31, 10, 189)';
+        });
+
+        withdrawBtn.addEventListener('mouseover', function(){
+            withdrawBtn.style.backgroundColor='rgb(231, 149, 149)';
+        });
+        withdrawBtn.addEventListener('mouseleave', function(){
+            withdrawBtn.style.backgroundColor='rgb(169, 8, 8)';
+        });
+   
+</script>
+
+
+</body>
+</html>

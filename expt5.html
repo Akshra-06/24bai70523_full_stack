@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Dashboard</title>
+    <style>
+      body {
+        color: white;
+        background-color: rgb(4, 4, 60);
+      }
+      .dashboard {
+        display: flex;
+        padding: 20px 60px;
+        gap: 40px;
+        width: 100%;
+      }
+      .mode {
+        background-color: rgba(206, 200, 200, 0.771);
+        color: white;
+        border: 1px solid rgba(190, 163, 163, 0.148);
+        padding: 10px 20px;
+        border-radius: 10px;
+        cursor: pointer;
+      }
+      .header {
+        display: flex;
+        align-items: center;
+        padding: 20px 60px;
+        justify-content: space-between;
+      }
+      .cards {
+        display: flex;
+        gap: 40px;
+        padding: 40px 60px;
+      }
+      .card {
+        width: 220px;
+        height: 180px;
+        background-color: rgb(9, 21, 110);
+        border-radius: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 26px;
+      }
+      .sidebar {
+        width: 260px;
+        height: 520px;
+        background-color: rgb(9, 21, 110);
+        border-radius: 20px;
+        padding: 30px;
+        font-size: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="header">
+      <h1>Admin Dashboard</h1>
+      <button class="mode" id="mode">Light mode</button>
+    </header>
+    <div class="dashboard">
+      <aside class="sidebar">
+        <h3>Navigation</h3>
+      </aside>
+      <section class="cards">
+        <div class="card">Users</div>
+        <div class="card">Analytics</div>
+        <div class="card">Settings</div>
+      </section>
+    </div>
+
+    <script>
+      let mode = document.getElementsByClassName("mode")[0];
+      document.addEventListener("DOMContentLoaded", function () {
+        console.log("js working");
+        console.log(mode.textContent);
+        let body = document.body;
+        let card = document.getElementsByClassName("card");
+        let sidebar=document.getElementsByClassName("sidebar")[0];
+        mode.addEventListener("click", function () {
+          if (mode.textContent == "Light mode") {
+            body.style.backgroundColor = "rgb(184, 184, 198)";
+            body.style.color = "rgb(9, 21, 110)";
+            mode.textContent = "Dark mode";
+            for(let i=0;i<card.length;i++){
+            card[i].style.backgroundColor="rgb(236, 236, 241)";
+            }
+            sidebar.style.backgroundColor="rgb(236, 236, 241)";
+            mode.style.backgroundColor="rgb(9, 21, 110)";
+          } else {
+            body.style.backgroundColor = "rgb(4, 4, 60)";
+            body.style.color = "white";
+            mode.textContent = "Light mode";
+            for(let i=0;i<card.length;i++){
+            card[i].style.backgroundColor="rgb(9, 21, 110)";
+          }
+          sidebar.style.backgroundColor="rgb(9, 21, 110)";
+          mode.style.backgroundColor="rgba(206, 200, 200, 0.771)";
+        }
+        });
+      });
+    </script>
+  </body>
+</html>
